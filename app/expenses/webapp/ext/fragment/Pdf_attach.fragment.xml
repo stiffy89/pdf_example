@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	
+	<VBox 
+		core:require="{handler: 'ns/expenses/ext/fragment/Pdf_attach'}">
+
+		<!-- <upload:UploadSet 
+			id="uploadSet"
+			fileTypes='pdf' 
+			instantUpload='false' 
+			uploadUrl="/odata/v4/purchasesservice/uploadAttachment">
+			<upload:toolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button
+							id="uploadSelectedButton"
+							text="Upload selected"
+							press="handler.onPress"/>
+					<upload:UploadSetToolbarPlaceholder />
+				</OverflowToolbar>
+			</upload:toolbar>
+		</upload:UploadSet> -->
+
+		<u:FileUploader id="uploadSet" tooltip="Upload your file to DB" change="handler.onFileChange"/>
+		<Button text="upload" press="handler.onUpload"/>
+		<ScrollContainer
+			visible="{IsActiveEntity}"
+			height="100%"
+			width="100%"
+			horizontal="true"
+			vertical="true">
+			<FlexBox direction="Column" renderType="Div" class="sapUiSmallMargin">
+				<PDFViewer displayType="Embedded" source="{pdf_attach}"  height="600px">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</PDFViewer>
+			</FlexBox>
+		</ScrollContainer>
+	</VBox>
+</core:FragmentDefinition>
